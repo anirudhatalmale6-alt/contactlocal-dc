@@ -173,6 +173,31 @@
         .bg-amber { background: var(--amber); }
         .btn-amber { background: rgba(255,193,7,0.12); }
 
+        .link-btn.expanded {
+            border-radius: 14px 14px 0 0;
+            margin-bottom: 0;
+        }
+        .detail-panel {
+            display: none;
+            background: rgba(4,138,129,0.08);
+            border-radius: 0 0 14px 14px;
+            padding: 16px 20px 18px;
+            margin-top: -12px;
+            font-size: 0.82rem;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+        .detail-panel.open { display: block; }
+        .detail-panel p { margin-bottom: 4px; }
+        .detail-panel .directions-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--teal);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
         .footer {
             text-align: center;
             padding: 20px 24px 30px;
@@ -250,16 +275,21 @@
                 <span class="link-arrow">&rsaquo;</span>
             </a>
 
-            <a href="https://maps.google.com/?q=26+Townhill+Rd,+Portglenone,+Ballymena+BT44+8AD" class="link-btn btn-teal" target="_blank">
+            <a class="link-btn btn-teal" id="btn-studio" onclick="toggleStudio(); return false;" href="#">
                 <div class="link-icon bg-teal">
                     <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
                 </div>
                 <div class="link-text">
                     <strong>Studio</strong>
-                    <span>26 Townhill Rd, Portglenone BT44 8AD</span>
+                    <span>Portglenone, BT44 8AD</span>
                 </div>
                 <span class="link-arrow">&rsaquo;</span>
             </a>
+            <div class="detail-panel" id="detail-studio">
+                <p>26 Townhill Rd, Portglenone</p>
+                <p>Ballymena BT44 8AD</p>
+                <a class="directions-link" href="https://maps.google.com/?q=26+Townhill+Rd,+Portglenone,+Ballymena+BT44+8AD" target="_blank">Get directions &rarr;</a>
+            </div>
 
             <span class="section-label">My Businesses</span>
 
@@ -317,6 +347,17 @@
         var u='getitframedni',d='gmail.com';
         window.location.href='mai'+'lto:'+u+'@'+d;
     });
+    function toggleStudio(){
+        var d=document.getElementById('detail-studio');
+        var b=document.getElementById('btn-studio');
+        if(d.classList.contains('open')){
+            d.classList.remove('open');
+            b.classList.remove('expanded');
+        }else{
+            d.classList.add('open');
+            b.classList.add('expanded');
+        }
+    }
     </script>
 </body>
 </html>
